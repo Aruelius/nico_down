@@ -5,8 +5,8 @@ import json
 import html
 import sys
 
-username = ''
-passwd = ''
+username = '' # n站登录帐号
+passwd = '' # n站登录密码
 
 s = requests.session()
 apiurl = 'https://api.dmc.nico/api/sessions?_format=json'
