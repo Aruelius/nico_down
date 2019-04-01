@@ -18,7 +18,11 @@ get_cookie = s.post('https://account.nicovideo.jp/api/v1/login?site=niconico', d
 
 r = s.get(sys.argv[1])
 resp = re.findall(r'<div id="js-initial-watch-data" data-api-data="(.+?)" data-environment="', r.text)[0]
-vip = re.findall(r'user.member_status = \'(.+?)\';', r.text)[0] # 找寻会员关键字
+try:
+	vip = re.findall(r'user.member_status = \'(.+?)\';', r.text)[0] # 找寻会员关键字
+except:
+	print('登录失败！请检查帐号密码是否正确！')
+	sys.exit(0)
 txt = html.unescape(resp) # 转码
 js1 = json.loads(txt) # 转为json格式
 
